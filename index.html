@@ -36,34 +36,38 @@
 </head>
 <body>
     
-    <main class="d-flex align-items-center justify-content-center flex-column text-center">
+    <main class="text-center vh-100 d-flex flex-column">
+
         <section id="form-container" class="container">
 
-            <form class="">
+            <form id="register-form" class="grid" data-editindex="">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                    <div class="col">
+                <div class="row my-4">
+                    <div class="col col-md-6">
                         <div class="form-outline">
-                        <input type="text" id="form3Example1" class="form-control" />
-                        <label class="form-label" for="form3Example1">First name</label>
+                        <input type="text" id="firstName" class="form-control" />
+                        <label class="form-label" for="firstName">First name</label>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-6">
                         <div class="form-outline">
-                        <input type="text" id="form3Example2" class="form-control" />
-                        <label class="form-label" for="form3Example2">Last name</label>
+                        <input type="text" id="lastName" class="form-control" />
+                        <label class="form-label" for="lastName">Last name</label>
                         </div>
                     </div>
                 </div>
             
                 <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control" />
-                    <label class="form-label" for="form3Example3">Email address</label>
+
+                <div class="my-4">
+                    <div class="form-outline">
+                        <input type="email" id="emailAddress" class="form-control" />
+                        <label class="form-label" for="emailAddress">Email address</label>
+                    </div>
                 </div>
             
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4 w-25 mx-auto">Registerera</button>
+                <button type="submit" class="btn btn-primary btn-block mb-5  mx-auto">Registerera</button>
             </form>
 
         </section>
@@ -71,101 +75,15 @@
         <section id="register-list-container" class="container">
 
             <div id="register-list" class="row gy-5">
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
+                
     
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
-    
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
-    
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
-    
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
-    
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="user col-4">
-                    <div class="user-info">
-                        <p class="h4">James Harden</p>
-                        <p>jameshardennba1@gmail.com</p>
-                    </div>
-    
-                    <div class="btns">
-                        <button class="delete-user btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="edit-user btn btn-warning">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                    </div>
-                </div>
+
                 
             </div>
 
         </section>
     </main>
     
+
 </body>
 </html>
