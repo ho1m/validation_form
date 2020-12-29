@@ -4,10 +4,10 @@ window.addEventListener("load", () => {
 
     const form = document.getElementById('register-form');
     const listContainer = document.getElementById('register-list');
-    let correctInfo = false;
+    let errors = [];
 
     // input fields
-    const firstName = document.getElementById('firstName'),
+    let firstName = document.getElementById('firstName'),
     lastName = document.getElementById('lastName'),
     email = document.getElementById('emailAddress');
 
@@ -87,28 +87,46 @@ window.addEventListener("load", () => {
     }
 
     function validateForm() {
-        let existingUser = users.find(user => user.email == email.value);
-        if (existingUser) return "User already exits!";
-        // should add classes instead! + text under field here!
 
-        let filledFirstName = firstName.value, 
-            filledLastName = lastName.value, 
-            filledEmail = email.value;
+        errors = []
+
+        let existingUser = users.find(user => user.email == email.value);
+        if (existingUser) errors = [...errors, {field: email, error: "User exists already!"}];
         
-        document.querySelectorAll(".form-control").forEach(input => {
-            if(!input.value) {
-            
+        let allForms = [firstName, lastName, email]
+
+        const emailTest = /^(([^öäå<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const nameTest = /^([A-Za-zéàë]{2,40} ?)+$/;
+        
+        let validEmail = emailTest.test(String(email.value).toLowerCase());
+        let validFirstN = nameTest.test(String(firstName.value).toLowerCase());
+        let validLastN = nameTest.test(String(lastName.value).toLowerCase());
+
+        if (!validEmail) errors = [...errors, {field: email, error: "Invalid email"}];
+        if (!validFirstN) errors = [...errors, {field: firstName, error: "Invalid firstName"}];
+        if (!validLastN) errors = [...errors, {field: lastName, error: "Invalid lastName"}];
+
+        allForms.forEach(form => {
+            if(!form.value) {
+                errors = [...errors, {field: form, error: 
+                `${form.labels[0].innerText} field is empty!`}];
             }
+
+            form.classList.remove("bg-danger");
+            let allSpans = form.parentElement.querySelectorAll("span");
+            if (!allSpans.length == 0) allSpans.forEach(span => span.remove());
         })
 
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        errors.forEach(({ field, error }) => {
+            field.classList.add("bg-danger");
 
-        let validEmail = re.test(String(email.value).toLowerCase());
+            let span = document.createElement("span");
+            span.innerText = error;
 
-        correctInfo = !existingUser || !filledFirstName || !filledLastName || !filledEmail || !validEmail;
-
+            field.after(span);
+        })
         
-
+        return (errors.length == 0);
     }
 
 
@@ -117,13 +135,10 @@ window.addEventListener("load", () => {
 
         e.preventDefault();
 
-        validateForm();
-
-        if (!correctInfo) return; 
-
-        addUser(this.dataset.editindex);
-
-        form.reset();
+        if (validateForm()) {
+            addUser(this.dataset.editindex);
+            form.reset();
+        }
     }
 
     function handleUserClick({target}) {
