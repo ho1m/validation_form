@@ -102,9 +102,9 @@ window.addEventListener("load", () => {
         let validFirstN = nameTest.test(String(firstName.value).toLowerCase());
         let validLastN = nameTest.test(String(lastName.value).toLowerCase());
 
-        if (!validEmail) errors = [...errors, {field: email, error: "Invalid email"}];
-        if (!validFirstN) errors = [...errors, {field: firstName, error: "Invalid firstName"}];
-        if (!validLastN) errors = [...errors, {field: lastName, error: "Invalid lastName"}];
+        if (!validEmail) errors = [...errors, {field: email, error: " Invalid email"}];
+        if (!validFirstN) errors = [...errors, {field: firstName, error: " Invalid firstName"}];
+        if (!validLastN) errors = [...errors, {field: lastName, error: " Invalid lastName"}];
 
         allForms.forEach(form => {
             if(!form.value) {
